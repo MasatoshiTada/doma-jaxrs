@@ -6,7 +6,6 @@ import org.seasar.doma.AnnotationTarget;
 
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 /**
  * Created by tada on 2015/10/12.
