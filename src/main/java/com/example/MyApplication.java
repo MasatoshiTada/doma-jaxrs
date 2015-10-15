@@ -13,6 +13,7 @@ public class MyApplication extends Application {
     @Override
     public Map<String, Object> getProperties() {
         HashMap<String, Object> map = new HashMap<>();
+        // GlassFish/PayaraのデフォルトJSONパーサーであるMOXyを無効化する
         map.put("jersey.config.disableMoxyJson", Boolean.TRUE);
         return map;
     }
