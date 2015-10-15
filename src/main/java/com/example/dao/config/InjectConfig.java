@@ -14,7 +14,6 @@ import javax.inject.Named;
 @AnnotateWith(annotations = {
         @Annotation(target = AnnotationTarget.CLASS, type = Dependent.class)
         , @Annotation(target = AnnotationTarget.CONSTRUCTOR, type = Inject.class)
-//        , @Annotation(target = AnnotationTarget.CONSTRUCTOR_PARAMETER, type = Named.class, elements = "\"config\"")
 })
 public @interface InjectConfig {
 }

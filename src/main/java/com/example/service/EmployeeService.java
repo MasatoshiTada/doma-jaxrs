@@ -23,7 +23,7 @@ public class EmployeeService implements Serializable {
     @Transactional(Transactional.TxType.REQUIRED)
     public Optional<EmployeeDto> selectById(Integer empId) {
         Optional<Employee> employeeOptional = employeeDao.selectById(empId);
-        return convertToOptionalDto(employeeOptional);
+        return employeeOptional.map(this::convertToDto);
     }
 
     @Transactional(Transactional.TxType.REQUIRED)
@@ -32,18 +32,6 @@ public class EmployeeService implements Serializable {
         return list.stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
-    }
-
-    private Optional<EmployeeDto> convertToOptionalDto(Optional<Employee> employeeOptional) {
-        return employeeOptional.map(employee -> {
-            EmployeeDto dto = new EmployeeDto();
-            dto.setEmpId(employee.empId);
-            dto.setName(employee.name);
-            dto.setJoinedDate(employee.joinedDate);
-            dto.getDepartmentDto().setDeptId(employee.deptId);
-            dto.getDepartmentDto().setName(employee.deptName);
-            return dto;
-        });
     }
 
     private EmployeeDto convertToDto(Employee employee) {

@@ -1,0 +1,23 @@
+DROP TABLE employee;
+DROP TABLE department;
+
+CREATE TABLE department(
+  dept_id INTEGER PRIMARY KEY ,
+  name VARCHAR(20)
+);
+
+CREATE TABLE employee(
+  emp_id INTEGER PRIMARY KEY ,
+  name VARCHAR(20),
+  dept_id INTEGER REFERENCES department(dept_id),
+  joined_date DATE
+);
+
+INSERT INTO department(dept_id, name) VALUES(1, 'Sales');
+INSERT INTO department(dept_id, name) VALUES(2, 'Development');
+
+INSERT INTO employee(emp_id, name, dept_id, joined_date) VALUES(1, 'Yumi Wakatsuki', 1, '2015-04-01');
+INSERT INTO employee(emp_id, name, dept_id, joined_date) VALUES(2, 'Mai Fukagawa', 1, '2015-04-01');
+INSERT INTO employee(emp_id, name, dept_id, joined_date) VALUES(3, 'Erika Ikuta', 2, '2015-04-01');
+INSERT INTO employee(emp_id, name, dept_id, joined_date) VALUES(4, 'Reika Sakurai', 2, '2015-04-01');
+INSERT INTO employee(emp_id, name, dept_id, joined_date) VALUES(5, 'Nanase Nishino', 2, '2015-04-01');
