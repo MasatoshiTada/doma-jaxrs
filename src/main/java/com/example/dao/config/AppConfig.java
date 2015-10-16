@@ -1,16 +1,11 @@
 package com.example.dao.config;
 
-import com.example.dao.datasource.DataSourceProducer;
-import com.example.dao.qualifier.DerbyQualifier;
-import com.example.exception.dto.ExceptionDto;
 import org.seasar.doma.jdbc.Config;
 import org.seasar.doma.jdbc.dialect.Dialect;
 import org.seasar.doma.jdbc.dialect.MysqlDialect;
 
 import javax.annotation.Resource;
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
 import javax.sql.DataSource;
 
 /**
@@ -19,19 +14,17 @@ import javax.sql.DataSource;
 @ApplicationScoped
 public class AppConfig implements Config {
 
-    @Inject
-    @DerbyQualifier
-    private DataSourceProducer dataSourceProducer;
+    @Resource(lookup = "jdbc/sandbox")
+    private DataSource dataSource;
 
     @Override
     public DataSource getDataSource() {
-        return dataSourceProducer.getDataSource();
+        return dataSource;
     }
 
     @Override
     public Dialect getDialect() {
-        return dataSourceProducer.getDialect();
+        return new MysqlDialect();
     }
-
 
 }

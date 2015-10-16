@@ -1,5 +1,6 @@
 package com.example.resource.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
@@ -15,6 +16,7 @@ public class EmployeeDto implements Serializable {
     private String name;
 
     @JsonProperty("joined_date")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Tokyo")
     private Date joinedDate;
 
     @JsonProperty("department")
