@@ -4,14 +4,8 @@ JAX-RS+CDI+Doma2で作ったREST Webサービスです。
 
 Payara 4.1.153で動作確認しています。
 
-Payara内包のJavaDB及びそのJDBCリソースを使っていますので、アプリケーション起動前にJavaDBを起動してください。
+JDBCリソース名は"jdbc/sandbox"です。com.example.dao.config.AppConfigクラスで指定しています。
 
-JavaDB起動
-```
-<GF-HOME>/glassfish/bin/asadmin start-database
-```
+DB作成スクリプトは下記のファイルです。ご使用のDBに貼り付けてお使いください。
 
-JavaDB停止
-```
-<GF-HOME>/glassfish/bin/asadmin stop-database
-```
+src/main/resources/META-INF/com/example/dao/EmployeeDao/create.script
