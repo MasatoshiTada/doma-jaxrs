@@ -2,9 +2,9 @@
 
 JAX-RS+CDI+Doma2で作ったREST Webサービスの学習用サンプルです。
 
-Payara 4.1.153+MySQL 5.6.で動作確認しています。
+Payara 4.1.153+MySQL 5.6で動作確認しています。
 
-Jerseyなどには依存していないので、WildFlyでも動くと思います（未確認）。
+Jerseyなどには依存していないので、WildFlyでもそのまま動作します（9.0.1.Finalで確認済み）。
 
 JDBCリソース名は"jdbc/sandbox"です。com.example.dao.config.AppConfigクラスで指定しています。
 
