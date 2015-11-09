@@ -4,6 +4,9 @@ import com.example.dao.EmployeeDao;
 import com.example.entity.Employee;
 import com.example.resource.dto.EmployeeDto;
 
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -15,18 +18,21 @@ import java.util.stream.Collectors;
 /**
  * Created by tada on 2015/10/12.
  */
-@Dependent
+//@Dependent
+@Stateless
 public class EmployeeService implements Serializable {
     @Inject
     private EmployeeDao employeeDao;
 
-    @Transactional(Transactional.TxType.REQUIRED)
+//    @Transactional(Transactional.TxType.REQUIRED)
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public Optional<EmployeeDto> selectById(Integer empId) {
         Optional<Employee> employeeOptional = employeeDao.selectById(empId);
         return employeeOptional.map(this::convertToDto);
     }
 
-    @Transactional(Transactional.TxType.REQUIRED)
+//    @Transactional(Transactional.TxType.REQUIRED)
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public List<EmployeeDto> selectLikeName(String name) {
         List<Employee> list = employeeDao.selectLikeName("%" + name + "%");
         return list.stream()
